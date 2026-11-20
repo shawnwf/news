@@ -1,0 +1,180 @@
+@import url(@unocss/reset/tailwind.css);
+@import url(overlayscrollbars/overlayscrollbars.css);
+
+html,
+body,
+#app {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: 'Baloo 2';
+  src: url("/Baloo2-Bold.subset.ttf");
+}
+
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  --at-apply: color-base bg-base text-base;
+  background-image: var(--nn-sprinkle);
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* ============ NewsNow 主题系统（CSS 变量） ============
+   --nn-bg       页面背景色（不透明）
+   --nn-card     卡片/面板背景色（自带半透明）
+   --nn-text     正文文字颜色
+   --nn-sprinkle 页面顶部氛围光晕（radial-gradient）
+   每个 html[data-nn-theme="X"] 定义一套配色，html.dark[data-nn-theme="X"] 为其深色版。
+   未设置 data-nn-theme 时使用 :root 默认值（即原版配色）。 */
+
+:root {
+  --nn-bg: #e4e4e7;
+  --nn-card: rgba(228, 228, 231, 0.7);
+  --nn-text: #262626;
+  --nn-sprinkle: radial-gradient(ellipse 80% 80% at 50% -30%, rgba(248, 113, 113, 0.3), rgba(255, 255, 255, 0));
+}
+
+html.dark {
+  --nn-bg: #1c1c1e;
+  --nn-card: rgba(28, 28, 30, 0.7);
+  --nn-text: #d4d4d4;
+  --nn-sprinkle: radial-gradient(ellipse 80% 80% at 50% -30%, rgba(248, 113, 113, 0.22), rgba(0, 0, 0, 0));
+}
+
+/* 云青（默认）：浅色为雾蓝玻璃，深色为静谧深蓝 */
+html[data-nn-theme="sky"] {
+  --nn-bg: #e8f1fb;
+  --nn-card: rgba(255, 255, 255, 0.68);
+  --nn-text: #22334a;
+  --nn-sprinkle: radial-gradient(ellipse 80% 80% at 50% -30%, rgba(96, 165, 250, 0.28), rgba(255, 255, 255, 0));
+}
+html.dark[data-nn-theme="sky"] {
+  --nn-bg: #0e1a2c;
+  --nn-card: rgba(22, 36, 60, 0.72);
+  --nn-text: #c8d3e3;
+  --nn-sprinkle: radial-gradient(ellipse 80% 80% at 50% -30%, rgba(59, 130, 246, 0.22), rgba(0, 0, 0, 0));
+}
+
+/* 暖沙：浅色为奶油米色，深色为暖夜棕 */
+html[data-nn-theme="warm"] {
+  --nn-bg: #f6efe3;
+  --nn-card: rgba(255, 250, 240, 0.68);
+  --nn-text: #443a2c;
+  --nn-sprinkle: radial-gradient(ellipse 80% 80% at 50% -30%, rgba(245, 178, 104, 0.26), rgba(255, 255, 255, 0));
+}
+html.dark[data-nn-theme="warm"] {
+  --nn-bg: #1e1a13;
+  --nn-card: rgba(43, 38, 28, 0.72);
+  --nn-text: #e4dccc;
+  --nn-sprinkle: radial-gradient(ellipse 80% 80% at 50% -30%, rgba(217, 119, 6, 0.2), rgba(0, 0, 0, 0));
+}
+
+/* 青瓷：浅色为淡青绿，深色为墨绿夜 */
+html[data-nn-theme="mint"] {
+  --nn-bg: #e8f1ec;
+  --nn-card: rgba(255, 255, 255, 0.68);
+  --nn-text: #28362d;
+  --nn-sprinkle: radial-gradient(ellipse 80% 80% at 50% -30%, rgba(52, 211, 153, 0.24), rgba(255, 255, 255, 0));
+}
+html.dark[data-nn-theme="mint"] {
+  --nn-bg: #101b16;
+  --nn-card: rgba(24, 42, 33, 0.72);
+  --nn-text: #cde0d4;
+  --nn-sprinkle: radial-gradient(ellipse 80% 80% at 50% -30%, rgba(16, 185, 129, 0.2), rgba(0, 0, 0, 0));
+}
+
+/* 暮紫：浅色为烟紫灰，深色为深暮紫 */
+html[data-nn-theme="dusk"] {
+  --nn-bg: #efeaf7;
+  --nn-card: rgba(255, 255, 255, 0.68);
+  --nn-text: #33304a;
+  --nn-sprinkle: radial-gradient(ellipse 80% 80% at 50% -30%, rgba(167, 139, 250, 0.26), rgba(255, 255, 255, 0));
+}
+html.dark[data-nn-theme="dusk"] {
+  --nn-bg: #151120;
+  --nn-card: rgba(38, 32, 58, 0.72);
+  --nn-text: #d8d4ea;
+  --nn-sprinkle: radial-gradient(ellipse 80% 80% at 50% -30%, rgba(139, 92, 246, 0.2), rgba(0, 0, 0, 0));
+}
+
+/* 水墨：浅色为宣纸白，深色为 OLED 纯黑 */
+html[data-nn-theme="ink"] {
+  --nn-bg: #f4f4f2;
+  --nn-card: rgba(255, 255, 255, 0.75);
+  --nn-text: #1c1c1c;
+  --nn-sprinkle: radial-gradient(ellipse 80% 80% at 50% -30%, rgba(120, 120, 130, 0.16), rgba(255, 255, 255, 0));
+}
+html.dark[data-nn-theme="ink"] {
+  --nn-bg: #000000;
+  --nn-card: rgba(20, 20, 20, 0.72);
+  --nn-text: #d9d9d9;
+  --nn-sprinkle: radial-gradient(ellipse 80% 80% at 50% -30%, rgba(70, 90, 120, 0.18), rgba(0, 0, 0, 0));
+}
+
+/* 樱粉：浅色为淡樱粉，深色为暗梅色 */
+html[data-nn-theme="sakura"] {
+  --nn-bg: #f8e9ee;
+  --nn-card: rgba(255, 255, 255, 0.68);
+  --nn-text: #4c333c;
+  --nn-sprinkle: radial-gradient(ellipse 80% 80% at 50% -30%, rgba(244, 114, 182, 0.24), rgba(255, 255, 255, 0));
+}
+html.dark[data-nn-theme="sakura"] {
+  --nn-bg: #1d1318;
+  --nn-card: rgba(47, 30, 38, 0.72);
+  --nn-text: #e9d5db;
+  --nn-sprinkle: radial-gradient(ellipse 80% 80% at 50% -30%, rgba(236, 72, 153, 0.2), rgba(0, 0, 0, 0));
+}
+
+/* 原味：项目原始配色（灰锌 + 红色光晕） */
+html[data-nn-theme="classic"] {
+  --nn-bg: #e4e4e7;
+  --nn-card: rgba(228, 228, 231, 0.7);
+  --nn-text: #262626;
+  --nn-sprinkle: radial-gradient(ellipse 80% 80% at 50% -30%, rgba(248, 113, 113, 0.3), rgba(255, 255, 255, 0));
+}
+html.dark[data-nn-theme="classic"] {
+  --nn-bg: #1c1c1e;
+  --nn-card: rgba(28, 28, 30, 0.7);
+  --nn-text: #d4d4d4;
+  --nn-sprinkle: radial-gradient(ellipse 80% 80% at 50% -30%, rgba(248, 113, 113, 0.22), rgba(0, 0, 0, 0));
+}
+
+
+button:disabled {
+  cursor: not-allowed;
+  pointer-events: all !important;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+}
+
+/* https://github.com/KingSora/OverlayScrollbars/blob/master/packages/overlayscrollbars/src/styles/themes.scss */
+.dark .os-theme-dark {
+  --os-handle-bg: rgba(255, 255, 255, 0.44);
+  --os-handle-bg-hover: rgba(255, 255, 255, 0.55);
+  --os-handle-bg-active: rgba(255, 255, 255, 0.66);
+}
+
+
+*, a, button {
+  cursor: default;
+  user-select: none;
+}
+
+#dropdown-menu li {
+  --at-apply: hover:bg-neutral-400/10 rounded-md flex items-center p-1 gap-1;
+}
+
+
+.grabbing * {
+  cursor: grabbing;
+}
